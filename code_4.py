@@ -23,14 +23,10 @@ def get_big_mac_price_by_country(country_code):
 
 
 def get_the_cheapest_big_mac_price_by_year(year):
-    filtered_data = df[df['date'].astype(str) == str(year)]
-    cheapest_row = filtered_data.nsmallest(1, 'dollar_price').iloc[0]
-    country_name = cheapest_row['name']
-    iso_a3 = cheapest_row['iso_a3']
-    dollar_price = cheapest_row['dollar_price']        
-    output = f"{country_name}({iso_a3}): ${round(dollar_price, 2)}"    
-    return output                          
-    
+    filtered_df = df.query(f'iso_a3.str.lower() == "{country_code.lower()}"')
+    mean_dollar_price = round(filtered_df['dollar_price'].mean(), 2)
+    return mean_dollar_price  
+                        
 
 def get_the_most_expensive_big_mac_price_by_year(year):
     filtered_data = df[df['date'].astype(str) == str(year)]
@@ -39,7 +35,7 @@ def get_the_most_expensive_big_mac_price_by_year(year):
     iso_a3 = expensive_row['iso_a3']
     dollar_price = expensive_row['dollar_price']
     output = f"{country_name}({iso_a3}): ${round(dollar_price, 2)}"
-    return output
+    
 
 
 if __name__ == "__main__":  
