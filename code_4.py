@@ -30,7 +30,7 @@ def get_the_most_expensive_big_mac_price_by_year(year):
     return f"{expensive_row['name']}({expensive_row['iso_a3']}): ${round(expensive_row['dollar_price'], 2):.2f}"
 
 
-    if __name__ == "__main__":  
+if __name__ == "__main__":  
        result_a = get_big_mac_price_by_year(2010, "arg")
        print(result_a) # 2.7
 
