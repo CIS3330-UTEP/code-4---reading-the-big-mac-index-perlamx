@@ -1,19 +1,22 @@
+import csv
 import pandas as pd
-filename = './big-mac-full-index.csv'
-df = pd.read_csv(filename)
+big_mac_file = './big-mac-full-index.csv'
+df = pd.read_csv('./big-mac-full-index.csv')
+# Date Format: YYYY-MM-DD
+year = 2010
 
 def get_big_mac_price_by_year(year, country_code):
-   query_text = f"iso_a3 == '{country_code.upper()}' and date =='{year}'"
+   query_text = f"((date >= '{year}-01-01' and date <= '{year}-12-31' and iso_a3.str.lower() == '{country_code.lower()}''))"
    df_result = df.query(query_text)
-   mean_price = df_result['dollar_price'].mean()
-   return round(mean_price, 2)
+   mean_dollar_price = df_result['dollar_price'].mean()
+   return round(mean_dollar_price, 2)
    
 
 def get_big_mac_price_by_country(country_code):
     query_text = f"iso_a3 == '{country_code.upper()}'"
     df_result = df.query(query_text)
-    mean_price = df_result['dollar_price'].mean()
-    return round(mean_price, 2)
+    mean_dollar_price = df_result['dollar_price'].mean()
+    return round(mean_dollar_price, 2)
 
 
 def get_the_cheapest_big_mac_price_by_year(year):
