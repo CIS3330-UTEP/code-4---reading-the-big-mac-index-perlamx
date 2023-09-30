@@ -15,7 +15,7 @@ def get_big_mac_price_by_year(year, country_code):
    
 
 def get_big_mac_price_by_country(country_code):
-    query_text = f"iso_a3.str.uuper() == '{country_code.upper()}'"
+    query_text = f"iso_a3.str.upper() == '{country_code.upper()}'"
     df_result = df.query(query_text)
     filtered_data = df[df['iso_a3'] == country_code.upper()]
     mean_dollar_price = filtered_data['dollar_price'].mean()
