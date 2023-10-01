@@ -45,7 +45,7 @@ if __name__ == "__main__":
        print(result_b) # 2.68
 
        result_c = get_the_cheapest_big_mac_price_by_year(2008)
-       print(result_c) # Malaysia(MYS): $1.7
+       print(result_c) # China(CHN): $1.4
 
        result_d = get_the_most_expensive_big_mac_price_by_year(2014)
        print(result_d) # Norway(NOR): $7.8
