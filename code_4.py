@@ -6,7 +6,7 @@ df = pd.read_csv('./big-mac-full-index.csv')
 year = '2010'
 country_code = 'mys'
 dollar_price = '1.7'
-
+# Adding a comment to test latest version of code.
 
 def get_big_mac_price_by_year(year, country_code):
    query_text = f"date >= '{year}-01-01' and date <= '{year}-12-31' and iso_a3.str.lower() == '{country_code.lower()}'"
