@@ -27,7 +27,7 @@ def get_the_cheapest_big_mac_price_by_year(year):
     query_text = f"date >= '{year}-01-01' and date <= '{year}-12-31'"
     df_result = df.query(query_text)                    
     cheapest_row = df_result.loc[df_result['dollar_price'].idxmin()]
-    return f"{cheapest_row['name']}({cheapest_row['iso_a3']}): ${'%.1f' %cheapest_row['dollar_price']}"
+    return f"{cheapest_row['name']}({cheapest_row['iso_a3']}): ${round(cheapest_row['dollar_price'],2)}"
 
 
 def get_the_most_expensive_big_mac_price_by_year(year):
